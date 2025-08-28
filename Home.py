@@ -1,10 +1,11 @@
 import streamlit as st
 
-st.set_page_config(page_title="Dashboard KPI Télécoms", layout="wide")
+st.set_page_config(page_title="Benchmark KPI Telco", layout="wide")
 
 st.title("📊 Dashboard KPI Télécoms")
 st.markdown("""
-Bienvenue dans le tableau de bord multi-pages.
+Bienvenue dans ce tableau de bord digital.
+**Comment Orange se positionne vs ses pairs sur les KPI financiers?**
 
 Utilisez le **menu à gauche** pour naviguer entre les indicateurs clés :
 - **Page 1** : Revenu
