@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 st.set_page_config(layout="wide")
-st.title("Visualisation KPI - Operating Cash Flow / Revenue (2Q25)")
+st.title("Visualisation KPI - Operating Cash Flow / Revenue LTM (2Q25)")
 
 # Charger les données
 df = pd.read_excel("data/Bench_Viz.xlsx")
@@ -76,7 +76,7 @@ fig = px.scatter(
 
 fig.update_traces(marker=dict(size=14), textposition="top center")
 fig.update_layout(
-    title="Taux OPCF (2Q25) par opérateur",
+    title="Taux OPCF LTM (2Q25) par opérateur",
     xaxis=dict(showticklabels=False, title=""),
     yaxis=dict(range=[0, 60], title="Taux (%)", gridcolor='lightgray'),
     plot_bgcolor="white"
