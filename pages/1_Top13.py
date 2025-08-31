@@ -18,16 +18,13 @@ df["rank"] = range(1, len(df) + 1)
 
 # Highlight Orange
 df["label"] = [
-    f"<span style='color:orange'>{r}.</span> <span style='color:orange'>{op}</span>" if op == "Orange"
+    f"<span style='color:orange'>{r}. {op}</span>" if op == "Orange"
     else f"{r}. {op}"
     for r, op in zip(df["rank"], df["operator"])
 ]
 
 # Flèches croissance
-df["growth_arrow"] = [
-    "↑" if val > 0 else "↓"
-    for val in df["growth"]
-]
+df["growth_arrow"] = ["↑" if val > 0 else "↓" for val in df["growth"]]
 df["growth_color"] = ["green" if val > 0 else "red" for val in df["growth"]]
 df["growth_text"] = [f"{val:+.1f}%" for val in df["growth"]]
 
@@ -51,31 +48,31 @@ fig.add_trace(go.Bar(
     hovertemplate="%{y}<br>Chiffre d’affaires: %{x} Mds €<extra></extra>"
 ))
 
-# Ajout du texte CA (décalage fixe, pas chevauchement)
+# Placement automatique du chiffre CA à droite de la barre
 for y, x, val, op in zip(df["label"], df["revenue"], df["revenue"], df["operator"]):
     fig.add_annotation(
-        x=x + 2,  # décalage fixe pour éviter chevauchement
+        x=x + max(1, 0.02*x),  # petit décalage proportionnel
         y=y,
-        text=f"{val:.1f} Mds €",
+        text=f"{val:.1f}",      # juste le chiffre, plus Mds €
         font=dict(color="black" if op != "Orange" else "orange", size=12),
         showarrow=False,
         align="left"
     )
 
-# Ajout des flèches + % croissance (encore plus loin à droite)
+# Flèches + croissance à droite du chiffre CA
 for y, x, arrow, pct, color in zip(df["label"], df["revenue"], df["growth_arrow"], df["growth_text"], df["growth_color"]):
     fig.add_annotation(
-        x=x + 10,  # bien séparé du texte CA
+        x=x + max(6, 0.08*x),  # décalage proportionnel
         y=y,
-        text=f"{arrow} {pct}",
-        font=dict(color=color, size=12, family="Arial Black"),  # flèche + grosse
+        text=f"<b>{arrow} {pct}</b>",
+        font=dict(color=color, size=12, family="Arial Black"),
         showarrow=False,
         align="left"
     )
 
 fig.update_layout(
     title=dict(
-        text="Chiffre d’affaires (Mds €) et Taux de croissance S1 2025",
+        text="Chiffre d’affaires (Mds€) et Taux de croissance S1 2025",
         x=0.5, xanchor="center"
     ),
     yaxis=dict(
@@ -84,7 +81,7 @@ fig.update_layout(
         categoryarray=df["label"]
     ),
     xaxis=dict(visible=False),
-    bargap=0.5,  # barres fines
+    bargap=0.5,
     margin=dict(l=120, r=150, t=60, b=40),
     height=650
 )
