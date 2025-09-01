@@ -40,7 +40,7 @@ data = {
 df = pd.DataFrame(data)
 
 # === Afficher le Top 5 ===
-st.subheader("📊 Top 5 des entreprises télécoms par capitalisation boursière")
+st.subheader("📊 Top 5 des entreprises télécoms par capitalisation boursière au 31/08/2025")
 st.table(df.head(5))
 
 # === Positionnement d’Orange ===
