@@ -47,6 +47,6 @@ st.markdown(
 # # === Positionnement d’Orange ===
 # orange_row = df[df["Nom"] == "Orange"]
 
-st.subheader("📍 Positionnement d’Orange")
-st.table(orange_row)
-"""
+# st.subheader("📍 Positionnement d’Orange")
+# st.table(orange_row)
+# """
