@@ -16,8 +16,8 @@ df["operator"] = df["operator"].astype(str).str.strip()
 # Filtrer uniquement Capex / Revenue
 df = df[df["kpi"].str.lower() == "capex / revenue"].copy()
 
-# --- Nettoyage des colonnes 2Q25 et 2Q24 ---
-for col in ["2Q25", "2Q24"]:
+# --- Nettoyage des colonnes 2Q26 et 2Q25 ---
+for col in ["2Q26", "2Q25"]:
     df[col] = (
         df[col].astype(str)
         .str.replace("%", "", regex=False)
@@ -29,10 +29,10 @@ for col in ["2Q25", "2Q24"]:
     if df[col].max() <= 1.0:
         df[col] *= 100
 
-df = df.dropna(subset=["2Q25", "2Q24"])
+df = df.dropna(subset=["2Q26", "2Q25"])
 
 # --- Calcul de la variation en points ---
-df["variation_pt"] = df["2Q25"] - df["2Q24"]
+df["variation_pt"] = df["2Q26"] - df["2Q25"]
 
 # Couleurs fixes pour chaque opérateur
 operator_colors = {
@@ -59,7 +59,7 @@ selected_operators = st.multiselect(
 df = df[df["operator"].isin(selected_operators)]
 
 # --- Tri des opérateurs pour la légende (haut → bas) ---
-df = df.sort_values("2Q25", ascending=False)
+df = df.sort_values("2Q26", ascending=False)
 ordered_operators = df["operator"].unique().tolist()
 
 # --- Texte pour hover ---
@@ -67,7 +67,7 @@ def make_hover(row):
     color = "green" if row["variation_pt"] > 0 else ("red" if row["variation_pt"] < 0 else "black")
     return (
         f"<b>{row['operator']}</b><br>"
-        f"Taux 2Q25 : {row['2Q25']:.1f}%<br>"
+        f"Taux 2Q26 : {row['2Q26']:.1f}%<br>"
         f"Variation : <span style='color:{color}'>{row['variation_pt']:+.1f} pt</span>"
     )
 
@@ -78,7 +78,7 @@ df["x"] = "Capex / Revenue"
 fig = px.scatter(
     df,
     x="x",
-    y="2Q25",
+    y="2Q26",
     color="operator",
     category_orders={"operator": ordered_operators},
     color_discrete_map=operator_colors,
@@ -94,7 +94,7 @@ for trace in fig.data:
     trace.update(marker=dict(size=14), hovertemplate="%{customdata[0]}<extra></extra>")
 
 fig.update_layout(
-    title="Capex / Revenue LTM (2Q25) par opérateur",
+    title="Capex / Revenue LTM (2Q26) par opérateur",
     xaxis=dict(showticklabels=False, title=""),
     yaxis=dict(range=[0, 40], title="Taux (%)", gridcolor="lightgray"),
     plot_bgcolor="white",
