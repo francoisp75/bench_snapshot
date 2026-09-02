@@ -7,7 +7,7 @@ def load_data():
     df = pd.read_excel("data/Bench_Viz.xlsx")
     df = df[df['kpi'] == 'YoY organic revenue growth']
 
-    periods = ['2Q24', '3Q24', '4Q24', '1Q25', '2Q25']
+    periods = ['2Q25', '3Q25', '4Q25', '1Q26', '2Q26']
     for col in periods:
         df[col] = pd.to_numeric(
             df[col].astype(str).str.replace(r'[%]', '', regex=True).str.replace(',', '.', regex=False),
@@ -19,7 +19,7 @@ def load_data():
 df = load_data()
 
 operators = ['ORA', 'VOD', 'DT', 'BT', 'TIM','TEF']
-periods = ['2Q24', '3Q24', '4Q24', '1Q25', '2Q25']
+periods = ['2Q25', '3Q25', '4Q25', '1Q26', '2Q26']
 
 st.title("Page 1 – Revenu")
 st.write("Évolution de la croissance organique YoY des revenus (Europe / non Europe / Groupe)")
