@@ -17,6 +17,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+"""
 # === Données extraites du site (capture partagée) ===
 data = {
     "Rang": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
@@ -48,3 +49,4 @@ orange_row = df[df["Nom"] == "Orange"]
 
 st.subheader("📍 Positionnement d’Orange")
 st.table(orange_row)
+"""
