@@ -111,7 +111,7 @@ for _, row in df[df["operator"].isin(label_operators)].iterrows():
     )
 
 fig.update_layout(
-    title="Taux EBITDAaL LTM (2Q25) par opérateur",
+    title="Taux EBITDAaL LTM (2Q26) par opérateur",
     xaxis=dict(showticklabels=False, title=""),
     yaxis=dict(range=[20, 50], title="Taux (%)", gridcolor="lightgray"),
     plot_bgcolor="white",
