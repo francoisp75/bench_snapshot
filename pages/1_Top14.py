@@ -22,7 +22,7 @@ df["growth_text"] = [f"{val:+.1f}%" for val in df["growth"]]
 
 # === Layout Streamlit ===
 st.set_page_config(layout="wide")
-st.markdown("<h1 style='text-align:center;'>Global Top 14</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center;'>Global Top 14 - CA H1 2026 YTD</h1>", unsafe_allow_html=True)
 
 # === CSS custom ===
 st.markdown("""
