@@ -5,7 +5,7 @@ import streamlit as st
 data = {
     "operator": [
         "China Mobile", "DT", "Verizon", "NTT", "Comcast",
-         "China Telecom", "ATT","China Unicom", "América Móvil","Orange","VOD"
+         "China Telecom", "ATT","China Unicom", "América Móvil","Orange","VOD",
         "SoftBank", "KDDI", "TEF"
     ],
     "revenue": [67, 60, 59, 41, 34, 33, 27, 25, 23, 21, 21, 20, 17, 16],
