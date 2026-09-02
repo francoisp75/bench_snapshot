@@ -8,7 +8,7 @@ Bienvenue dans ce tableau de bord digital.
 **Comment Orange se positionne vs ses pairs sur les KPI financiers?**
 
 Utilisez le **menu à gauche** pour naviguer entre les indicateurs clés :
-- **Page 1** : Top13
+- **Page 1** : Top14
 - **Page 2** : Revenu
 - **Page 3** : Revenu Europe
 - **Page 4** : EBITDAaL
