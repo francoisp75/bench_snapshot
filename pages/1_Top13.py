@@ -4,12 +4,12 @@ import streamlit as st
 # === Données ===
 data = {
     "operator": [
-        "China Mobile", "Verizon", "Deutsche Telekom", "AT&T", "NTT",
-        "Comcast", "China Telecom", "China Unicom", "América Móvil",
-        "SoftBank", "Orange", "Vodafone", "KDDI"
+        "China Mobile", "DT", "Verizon", "NTT", "Comcast",
+         "China Telecom", "ATT","China Unicom", "América Móvil","Orange","VOD"
+        "SoftBank", "KDDI", "TEF"
     ],
-    "revenue": [68.6, 62.3, 58.4, 56.3, 42.7, 37.1, 34.3, 25.3, 21.4, 20.9, 19.9, 18.7, 18.5],
-    "growth": [-0.5, 3.4, 3.9, 2.8, 0.3, -0.4, 1.3, 1.4, 9.8, 9.1, 0.3, 3.4, 3.9],
+    "revenue": [67, 60, 59, 41, 34, 33, 27, 25, 23, 21, 21, 20, 17, 16],
+    "growth": [-1.1, 4.0, 1.0, 10, -2.9, -4.0, 2.6, 0.6, 1.3, 3.5, 3.6, 7.9, 4.9, 0,4],
 }
 
 df = pd.DataFrame(data)
@@ -22,7 +22,7 @@ df["growth_text"] = [f"{val:+.1f}%" for val in df["growth"]]
 
 # === Layout Streamlit ===
 st.set_page_config(layout="wide")
-st.markdown("<h1 style='text-align:center;'>Global Top 13</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align:center;'>Global Top 14</h1>", unsafe_allow_html=True)
 
 # === CSS custom ===
 st.markdown("""
