@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 st.set_page_config(layout="wide")
-st.title("Visualisation KPI - Capex / Revenue LTM (2Q25)")
+st.title("Visualisation KPI - Capex / Revenue LTM (2Q26)")
 
 # Charger les données
 df = pd.read_excel("data/Bench_Viz.xlsx")
