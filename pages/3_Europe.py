@@ -9,9 +9,9 @@ st.write("Organic, YoY evolution")
 
 # Données
 data_growth = {
-    "operator": ["Digi", "Iliad", "DT", "ORA", "KPN", "TIM", "BT", "VOD", "ELISA", "TEF"],
-    "growth_pct": [10.6, 3.4, 2.3, 1.0, 0.7, 0.2, -0.1, -0.7, -0.8, -2.3],
-    "total_rev_bn": [1.2, 5.2, 19.1, 14.2, 2.9, 4.6, 10.0, 13.6, 1.1, 10.2],
+    "operator": ["Digi", "Iliad", "DT", "ORA", "KPN", "TIM", "BT", "VOD", "ELISA", "TEF",SFR],
+    "growth_pct": [10.6, 3.4, 2.3, 1.0, 0.7, 0.2, -0.1, -0.7, -0.8, -2.3,-8.9],
+    "total_rev_bn": [1.2, 5.2, 19.1, 14.2, 2.9, 4.6, 10.0, 13.6, 1.1, 10.2,4.1],
 }
 df = pd.DataFrame(data_growth)
 
