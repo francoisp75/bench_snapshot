@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 st.set_page_config(layout="wide")
-st.title("Visualisation KPI - Operating Cash Flow / Revenue LTM (2Q25)")
+st.title("Visualisation KPI - Operating Cash Flow / Revenue LTM (2Q26)")
 
 # Charger les données
 df = pd.read_excel("data/Bench_Viz.xlsx")
@@ -24,8 +24,8 @@ selected_operators = st.multiselect(
 # Filtrer uniquement OPCF
 df = df[df["kpi"].str.lower() == "operating cash flow / revenue"].copy()
 
-# Nettoyage des colonnes 2Q25 et 2Q24 si disponibles
-for col in ["2Q25", "2Q24"]:
+# Nettoyage des colonnes 2Q26 et 2Q25 si disponibles
+for col in ["2Q26", "2Q25"]:
     if col in df.columns:
         df[col] = (
             df[col].astype(str)
@@ -39,12 +39,12 @@ for col in ["2Q25", "2Q24"]:
     else:
         df[col] = None
 
-df = df.dropna(subset=["2Q25"])
+df = df.dropna(subset=["2Q26"])
 df = df[df["operator"].isin(selected_operators)]
 
-# Calcul de la variation si 2Q24 disponible
-if "2Q24" in df.columns:
-    df["variation_pt"] = df["2Q25"] - df["2Q24"]
+# Calcul de la variation si 2Q25 disponible
+if "2Q25" in df.columns:
+    df["variation_pt"] = df["2Q26"] - df["2Q25"]
 else:
     df["variation_pt"] = 0
 
@@ -63,13 +63,13 @@ operator_colors = {
 }
 
 # Tri pour légende (haut → bas)
-df = df.sort_values("2Q25", ascending=False)
+df = df.sort_values("2Q26", ascending=False)
 ordered_operators = df["operator"].unique().tolist()
 
 # Préparer texte hover
 def make_hover(row):
     color = "green" if row["variation_pt"] > 0 else ("red" if row["variation_pt"] < 0 else "black")
-    return f"<b>{row['operator']}</b><br>Taux 2Q25 : {row['2Q25']:.1f}%<br>Variation : <span style='color:{color}'>{row['variation_pt']:+.1f} pt</span>"
+    return f"<b>{row['operator']}</b><br>Taux 2Q26 : {row['2Q26']:.1f}%<br>Variation : <span style='color:{color}'>{row['variation_pt']:+.1f} pt</span>"
 
 df["hover_text"] = df.apply(make_hover, axis=1)
 df["x"] = "OPCF"
@@ -78,7 +78,7 @@ df["x"] = "OPCF"
 fig = px.scatter(
     df,
     x="x",
-    y="2Q25",
+    y="2Q26",
     color="operator",
     category_orders={"operator": ordered_operators},
     color_discrete_map=operator_colors,
@@ -93,10 +93,10 @@ for trace in fig.data:
     trace.update(marker=dict(size=14), hovertemplate="%{customdata[0]}<extra></extra>")
 
 # Ajustement automatique de l'échelle Y
-ymax = df["2Q25"].max() + 5
+ymax = df["2Q26"].max() + 5
 
 fig.update_layout(
-    title="Taux OPCF LTM (2Q25) par opérateur",
+    title="Taux OPCF LTM (2Q26) par opérateur",
     xaxis=dict(showticklabels=False, title=""),
     yaxis=dict(range=[0, ymax], title="Taux (%)", gridcolor="lightgray"),
     plot_bgcolor="white",
