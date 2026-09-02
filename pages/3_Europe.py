@@ -4,14 +4,14 @@ import plotly.graph_objects as go
 
 # Titre de la page
 st.set_page_config(page_title="Europe Revenue Growth", layout="wide")
-st.title("Europe Geographic TOTAL Revenue Growth in 1H 2025")
+st.title("Europe Geographic TOTAL Revenue Growth in 1H 2026")
 st.write("Organic, YoY evolution")
 
 # Données
 data_growth = {
-    "operator": ["Digi", "KPN", "Iliad", "Elisa", "TIM", "TEF", "DT", "BT", "ORA", "VOD"],
-    "growth_pct": [17.5, 4.4, 3.6, 3.0, 1.6, 0.2, 0.1, -2.0, -2.1, -2.6],
-    "total_rev_bn": [1.1, 2.9, 5.0, 1.1, 4.5, 10.5, 18.7, 11.8, 13.5, 12.4],
+    "operator": ["Digi", "Iliad", "DT", "ORA", "KPN", "TIM", "BT", "VOD", "ELISA", "TEF"],
+    "growth_pct": [10.6, 3.4, 2.3, 1.0, 0.7, 0.2, -0.1, -0.7, -0.8, -2.3],
+    "total_rev_bn": [1.2, 5.2, 19.1, 14.2, 2.9, 4.6, 10.0, 13.6, 1.1, 10.2],
 }
 df = pd.DataFrame(data_growth)
 
